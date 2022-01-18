@@ -1,4 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration
-  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myboard">
+	
+	<!-- 쿼리 실행 후 결과값 담아줄 resultMap -->
+	<resultMap type="boardDto" id="boardMap">
+		<result property="bd_no" column="BD_NO" />
+		<result property="bd_name" column="BD_NAME" />
+		<result property="bd_title" column="BD_TITLE" />
+		<result property="bd_content" column="BD_CONTENT" />
+		<result property="bd_date" column="BD_DATE" />
+
+	</resultMap>
+	<!-- 쿼리문 -->
+	<select id="selectList" resultMap="boardMap">
+		SELECT BD_NO, BD_NAME,
+		BD_TITLE, BD_CONTENT, BD_DATE
+		FROM STSBOARD
+	</select>
+
+	<select id="selectOne">
+	</select>
+
+	<insert id="insert">
+	</insert>
+
+	<update id="update">
+	</update>
+
+	<delete id="delete">
+	</delete>
+
+	<delete id="multiDelete">
+	</delete>
+
+
+</mapper>
