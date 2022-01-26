@@ -21,16 +21,26 @@
 		FROM STSBOARD
 	</select>
 
-	<select id="selectOne">
+	<select id="selectOne" resultType="boardDto" parameterType="int">
+		SELECT BD_NO, BD_NAME, BD_TITLE, BD_CONTENT, BD_DATE
+		FROM STSBOARD
+		WHERE BD_NO = #{bd_no}
 	</select>
 
-	<insert id="insert">
+	<insert id="insert" parameterType="boardDto">
+		INSERT INTO STSBOARD
+		VALUES(STSBD_SEQ.NEXTVAL, #{bd_name}, #{bd_title}, #{bd_content}, SYSDATE)
 	</insert>
 
 	<update id="update">
+		UPDATE STSBOARD
+		SET BD_TITLE=#{bd_title}, BD_CONTENT=#{bd_content} WHERE BD_NO=#{bd_no}
 	</update>
 
-	<delete id="delete">
+	<delete id="delete" parameterType="int">
+		DELETE
+		FROM STSBOARD
+		WHERE BD_NO=#{bd_no}
 	</delete>
 
 	<delete id="multiDelete">

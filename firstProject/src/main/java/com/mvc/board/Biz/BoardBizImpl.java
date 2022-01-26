@@ -23,26 +23,26 @@ public  class BoardBizImpl implements BoardBiz {
 
 	@Override
 	public BoardDto selectOne(int bd_no) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.selectOne(bd_no);
 	}
 	
 	@Override
 	public int insert(BoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.insert(dto);
 	}
 
 	@Override
 	public int update(BoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(int bd_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.delete(bd_no);
 	}
 	
 	

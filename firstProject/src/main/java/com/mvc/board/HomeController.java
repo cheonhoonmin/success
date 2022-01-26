@@ -25,6 +25,8 @@ public class HomeController {
 	@Autowired
 	private BoardBizImpl biz;
 	
+	
+	
 	@RequestMapping("/list.do")
 	public String main(Model model) {
 		logger.info("MAIN PAGE");
@@ -33,4 +35,73 @@ public class HomeController {
 		return "main";
 	}
 	
-}
+	@RequestMapping("/test.do")
+	public String bootstrapTest(Model model) {
+		logger.info("BOOTSTRAP TEST PAGE");
+		return "tables";
+	}
+	
+	@RequestMapping("/one.do")
+	public String one(Model model, int bd_no) {
+		logger.info("SELECT ONE");
+		
+		model.addAttribute("dto",biz.selectOne(bd_no));
+		System.out.println("!!!상세페이지!!");
+		return "selectone";
+	}
+	
+	@RequestMapping("/insert.do")
+	public String insert() {
+		logger.info("INSERT PAGE");
+		return "insert";
+	}
+	
+	@RequestMapping("/bdinsert.do")
+	public String insertBoard(BoardDto dto) {
+		logger.info("INSERT");
+		
+		int res = biz.insert(dto);
+		
+		if(res>0) {
+			return "redirect:list.do";
+		}else {
+		return "redirect:insert.do";
+		}
+	}
+	
+	@RequestMapping("/update.do")
+	public String update(Model model, int bd_no) {
+		logger.info("UPDATE PAGE");
+		
+		model.addAttribute("dto",biz.selectOne(bd_no));
+		
+		return "update";
+	}
+	
+	@RequestMapping("/bdupdate.do")
+	public String updateBoard(BoardDto dto) {
+		logger.info("UPDATE");
+		
+		int res = biz.update(dto);
+		if(res>0) {
+			return "redirect:one.do?bd_no="+dto.getBd_no();
+		}else {
+			return "redirect:update.do?bd_no="+dto.getBd_no();
+		}
+	}
+	
+	@RequestMapping("/delete.do")
+	public String delete(int bd_no) {
+		logger.info("DELETE");
+		
+		int res = biz.delete(bd_no);
+		if(res>0) {
+			return "redirect:list.do";
+		}else {
+			return "redirect:one.do?bd_no="+bd_no;
+		}
+		
+	}
+}	
+
+

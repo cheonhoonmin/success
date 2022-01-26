@@ -30,26 +30,51 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public BoardDto selectOne(int bd_no) {
-		// TODO Auto-generated method stub
-		return null;
+		BoardDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", bd_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 
 	@Override
 	public int insert(BoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"insert",dto); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
 	public int update(BoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"update",dto); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
 	public int delete(int bd_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete",bd_no); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 	
 	
