@@ -49,7 +49,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<th>TITLE</th>
 			<th>DATE</th>			
 		</tr>
-		<c:forEach items="${list }" var="dto">
+ 		<c:forEach items="${list }" var="dto">
 			<tr>
 				<td>${dto.bd_no }</td>
 				<td>${dto.bd_name }</td>

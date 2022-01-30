@@ -32,14 +32,13 @@ public class HomeController {
 		logger.info("MAIN PAGE");
 		model.addAttribute("list",biz.selectList());
 		System.out.println("!!!!!!HYENEE!!!!");
-		return "main";
-	}
-	
-	@RequestMapping("/test.do")
-	public String bootstrapTest(Model model) {
-		logger.info("BOOTSTRAP TEST PAGE");
 		return "tables";
 	}
+	
+	/*
+	 * @RequestMapping("/test.do") public String bootstrapTest(Model model) {
+	 * logger.info("BOOTSTRAP TEST PAGE"); return "tables"; }
+	 */
 	
 	@RequestMapping("/one.do")
 	public String one(Model model, int bd_no) {
